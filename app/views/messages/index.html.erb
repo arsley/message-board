@@ -3,18 +3,17 @@
 
   <div class="panel-body">
     <% @messages.each do |message| %>
-      名前:<%= message.name %>
-      内容:<%= message.body %>
+      <span style="font-weight: bold;"><%= message.name %></span> : <%= message.body %>
       <br>
     <% end %>
   </div>
 </div>
 
+<hr>
+
 <%= form_for(@message) do |f| %>
-  名前:
-  <%= f.text_field :name %>
+  <p>名前 : <%= f.text_field :name %></p>
   
-  内容:
-  <%= f.text_field :body %>
+  <p>内容 : <br><%= f.text_area :body, :size => "30x3", :maxlength => "100" %></p>
   <%= f.submit %>
 <% end %>
