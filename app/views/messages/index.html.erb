@@ -13,21 +13,28 @@
 
 <h2>MessageBoard</h2>
 <div class="well">
-  <% @messages.each do |message| %>
-    <span style="font-weight: bold;"><%= message.name %></span> : <%= message.body %>
-    <br>
-  <% end %>
+<% @messages.each do |message| %>
+  <span style="font-weight: bold;"><%= message.name %></span> : <%= message.body %>
+  <br>
+<% end %>
 </div>
 
 <hr>
 
-<div class="send_m">
-  <h2>Send Message</h2>
-  <div class="well">
-    <%= form_for(@message) do |f| %>
-      <p>名前 : <br><%= f.text_field :name %></p>
-      <p>内容 : <br><%= f.text_area :body, :size => "30x3", :maxlength => "100" %></p>
-      <%= f.submit %>
-    <% end %>
+<h2>Send Message</h2>
+<div class="well">
+<%= form_for(@message, :html => { :class => "form_horizontal" }) do |f| %>
+
+  <div class="form_group">
+    <label for="mess_name" class="col-md-1">名前 :</label>
+    <div class="col-md-11"><%= f.text_field :name, :class => "form_control", :id => "mess_name" %></div>
   </div>
+  
+  <div class="form_group">
+  <label for="mess_content" class="col-md-1">内容 :</label>
+  <div class="col-md-11"><%= f.text_area :body, :size => "30x1", :maxlength => "100", :class => "form_control", :id => "mess_content" %></div>
+  </div>
+
+<%= f.submit %>
+<% end %>
 </div>
