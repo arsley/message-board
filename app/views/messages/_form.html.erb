@@ -2,6 +2,7 @@
 
 <% if @message.errors.present? %>
   <div class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <%= alert %>
     <ul>
       <% @message.errors.full_messages.each do |full_message| %>
@@ -28,9 +29,10 @@
   <div class="form-group">
     <label for="message_body" class="col-md-2 control-label">内容 :</label>
     <div class="col-md-10">
-      <%= f.text_area :body, rows: '5', class: "form-control" %>
+      <%= f.text_area :body, rows: '5', class: 'form-control' %>
     </div>
   </div>
+  
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit '送信', class: 'btn btn-sm btn-primary' %>

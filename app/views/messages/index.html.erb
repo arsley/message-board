@@ -1,26 +1,16 @@
-<!--
-<div class="panel panel-primary">
-  <div class="panel-heading">メッセージ一覧</div>
-
-  <div class="panel-body">
-    <% @messages.each do |message| %>
-      <span style="font-weight: bold;"><%= message.name %></span> : <%= message.body %>
-      <br>
-    <% end %>
-  </div>
-</div>
--->
-
 <h2>AllMessages</h2>
 <div class="well">
 <% @messages.each do |message| %>
-  <span class="label label-info"><%= message.name %></span>  : <%= message.body %>  
-  <span style="color: #bbb; font-style: oblique;">
-    <% if message.age %>-- <%= message.age %> years old<% end %>
-  </span>
- (<%= link_to "edit", edit_message_path(message) %>
-  <%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>)
-  <br>
+  <div class="message">
+    <span class="label label-info"><%= message.name %></span>  : <%= message.body %>  
+    <span style="color: #bbb; font-style: oblique;">
+      <% if message.age %>-- <%= message.age %> years old<% end %>
+    </span>
+    <span class="edit_hidden">
+      <%= link_to "Edit", edit_message_path(message), class: 'bg-success' %>
+      <%= link_to "Delete", message, method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'bg-danger' %>
+    </span>
+  </div>
 <% end %>
 </div>
 

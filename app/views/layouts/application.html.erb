@@ -6,6 +6,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+<style>
+  body { font-family: Meiryo; }
+  h2 {
+    text-align: center;
+    color: #77c;
+  }
+  .edit_hidden { display: none; }
+  .message:hover .edit_hidden { display: inline; }
+</style>
+  
 </head>
 <body>
   
@@ -22,6 +33,7 @@
 
 <% if notice %>
   <div class="alert alert-info">
+    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
     <%= notice %>
   </div>
 <% end %>
