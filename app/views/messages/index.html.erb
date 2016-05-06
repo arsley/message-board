@@ -11,12 +11,15 @@
 </div>
 -->
 
-<h2>MessageBoard</h2>
+<h2>AllMessages</h2>
 <div class="well">
 <% @messages.each do |message| %>
-  <span class="label label-info"><%= message.name %></span> : <%= message.body %>
-   (<%= link_to "edit", edit_message_path(message) %>
-    <%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>)
+  <span class="label label-info"><%= message.name %></span>  : <%= message.body %>  
+  <span style="color: #bbb; font-style: oblique;">
+    <% if message.age %>-- <%= message.age %> years old<% end %>
+  </span>
+ (<%= link_to "edit", edit_message_path(message) %>
+  <%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>)
   <br>
 <% end %>
 </div>
