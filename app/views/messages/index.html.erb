@@ -14,7 +14,7 @@
 <h2>MessageBoard</h2>
 <div class="well">
 <% @messages.each do |message| %>
-  <span style="font-weight: bold;"><%= message.name %></span> : <%= message.body %>
+  <span class="label label-info"><%= message.name %></span> : <%= message.body %>
   <br>
 <% end %>
 </div>
@@ -22,19 +22,24 @@
 <hr>
 
 <h2>Send Message</h2>
-<div class="well">
-<%= form_for(@message, :html => { :class => "form_horizontal" }) do |f| %>
+<%= form_for @message, html: {class: 'form-horizontal'} do |f| %>
 
-  <div class="form_group">
-    <label for="mess_name" class="col-md-1">名前 :</label>
-    <div class="col-md-11"><%= f.text_field :name, :class => "form_control", :id => "mess_name" %></div>
+  <div class="form-group">
+    <label for="message_name" class="col-md-2 control-label">名前 :</label>
+    <div class="col-md-10">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
   </div>
   
-  <div class="form_group">
-  <label for="mess_content" class="col-md-1">内容 :</label>
-  <div class="col-md-11"><%= f.text_area :body, :size => "30x1", :maxlength => "100", :class => "form_control", :id => "mess_content" %></div>
+  <div class="form-group">
+    <label for="message_body" class="col-md-2 control-label">内容 :</label>
+    <div class="col-md-10">
+      <%= f.text_area :body, rows: '5', class: "form-control" %>
+    </div>
   </div>
-
-<%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
-</div>
